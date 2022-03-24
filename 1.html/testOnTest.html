@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <style>
+    div.artView{
+      width: 80%;
+      max-width: 1080px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    div.artView>div.artGroup{
+      width: 500%;
+      transition: margin-left 0.5s;
+    }
+    div.artView>div.artGroup::after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+    div.artView>div.artGroup>div.article{
+      width: 20%;
+      height: 500px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      float: left;
+      transition: opacity 0.5s;
+    }
+    div.artView>div.artGroup>div.article:nth-child(1){
+      background-image: url('./images/cnt01_pic02.jpg');
+    }
+    div.artView>div.artGroup>div.article:nth-child(2){
+      background-image: url('./images/cnt01_pic01.jpg');
+    }
+    div.artView>div.artGroup>div.article:nth-child(3){
+      background-image: url('./images/cnt01_pic03.jpg');
+    }
+    div.artView>div.artGroup>div.article:nth-child(4){
+      background-image: url('./images/cnt02_pic01.jpg');
+    }
+    div.artView>div.artGroup>div.article:nth-child(5){
+      background-image: url('./images/cnt02_pic02.jpg');
+    }
+
+    ul.paging{
+      width: 20%;
+      position: relative;
+      top: -40px;
+      margin: auto;
+      left: 0;right: 0;
+    }
+    ul.paging::after{
+      content:'';
+      display: block;
+      clear: both;
+    }
+    ul.paging>li{
+      width: 20px;
+      height: 20px;
+      background-color: #ccc;
+      float: left;
+      border-radius: 20px;
+      margin: 0px 5px;
+      cursor: pointer;
+      transition: width 0.5s;
+    }
+    ul.paging>li.show{
+      width: 40px;
+      background-color: #fc0;
+    }
+    ul.stars{
+      width: 20%;
+      margin: 0 auto;
+    }
+    ul.stars.fixed{
+      animation-name: blink;
+      animation-duration: 0.5s;
+      animation-iteration-count: 3;
+      animation-fill-mode: forwards;
+    }
+    @keyframes blink {
+      0%{
+        opacity: 1;
+      }50%{
+        opacity: 0;
+      }100%{
+        opacity: 1;
+      }
+    }
+    ul.stars>li{
+      font-size: 48px;
+      float: left;
+      cursor: pointer;
+    }
+  </style>
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function(){
+      var i = 0;
+      var fix = true;
+      var now = 0;
+
+      $('.paging>li').click(function(){
+        $('.paging>li').removeClass('show');
+        $(this).addClass('show');
+        var ind  =$(this).index();
+        $('.article').css('opacity',0);
+        $('.artGroup').css('margin-left',ind * -100 + '%');
+        $('.article').eq(ind).css('opacity',1);
+        i=ind;
+        
+      }); 
+      
+      $('button').first().click(function(){
+        $('.article').css('opacity',1);
+        i--;
+        if(i<=0){
+          i=0;
+        }
+        $('.artGroup').css('margin-left',i * -100 + '%');
+        $('.paging>li').removeClass('show');
+        $('.paging>li').eq(i).addClass('show');
+        
+      });
+      
+      $('button').last().click(function(){
+        $('.article').css('opacity',1);
+        i++;
+        if(i>=4){
+          i=4;
+        }
+
+        $('.artGroup').css('margin-left',i * -100 + '%');
+        $('.paging>li').removeClass('show');
+        $('.paging>li').eq(i).addClass('show');
+        
+      });
+
+
+      $('.stars>li').click(function(){
+        var ind = $(this).index();
+        fix = false;
+        now = ind;
+        $('.stars>li').text('☆');
+        $(this).parent().addClass('fixed');
+        
+        for(i=0; i<= ind ; i++){
+          $('.stars>li').eq(i).text('★');
+        }
+      });
+
+
+      $('.stars>li').mouseenter(function(){
+        var ind = $(this).index();
+        $('.stars>li').text('☆');
+        
+        for(i=0; i<= ind ; i++){
+          $('.stars>li').eq(i).text('★');
+        }
+        $(this).mouseleave(function(){
+          if(fix){
+            $('.stars>li').text('☆');
+          }else{
+            for(i=0; i<= now ; i++){
+              $('.stars>li').eq(i).text('★');
+            }
+          }
+        });
+
+      });
+
+      
+    });
+  </script>
+</head>
+<body>
+  <div class="artView">
+    <div class="artGroup">
+      <div class="article"></div>
+      <div class="article"></div>
+      <div class="article"></div>
+      <div class="article"></div>
+      <div class="article"></div>
+    </div>
+    <ul class="paging">
+      <li class="show"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+    <button>left</button>
+    <button>right</button>
+  </div>
+</body>
+</html>

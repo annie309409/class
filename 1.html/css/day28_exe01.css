@@ -1,0 +1,350 @@
+body{
+  overflow-x: hidden;
+}
+div.mnTopWrap{
+  background-color: coral;
+  color: #fff;
+}
+
+div.mnTop{
+  width: 80%;
+  max-width: 1080px;
+  margin: 0 auto;
+  line-height: 40px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+div.mnTop::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+div.mnTop h1{
+  float: left;
+}
+div.mnTop ul.nav{
+  float: right;
+}
+div.mnTop ul.nav li{
+  float: left;
+  margin-left: 40px;
+}
+div.mnTop ul.nav li label{
+  
+  cursor: pointer;
+}
+div.navBox{
+  background-color: #ccc;
+  color: #fff;
+}
+div.bg{
+  width: 100%;
+  height: 120px;
+  background-color: #333;
+  position: absolute;
+  left: 0;
+  top: 40px;
+}
+#ch{
+  display: none;
+}
+div.navBox{
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+#ch:checked+div.navBox{
+  height: 480px;
+}
+div.navBox div.menu{
+  width: 80%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 20px 10px;
+  background-color: #999;
+  position: relative;
+
+}
+div.navBox div.menu:hover{
+  background-color: #333;
+}
+div.navBox div.menu:hover>ul.nav{
+  z-index: 1;
+  position: relative;
+}
+div.navBox div.menu:hover>div.images{
+  z-index: 1;
+  position: relative;
+}
+div.navBox div.menu:hover::before{
+  background-color: #333;
+  width: 100vw;
+  position: absolute;
+  left: calc((100vw - 1080px) / -2);
+  height: 120px;
+  top: 0;
+  content: '';
+  display: block;
+}
+div.navBox div.menu::after{
+  content:'';
+  display: block;
+  clear: both;
+}
+div.navBox div.menu ul.nav{
+  float: left;
+}
+
+div.navBox div.menu div.images{
+  float: right;
+  width: 50%;
+}
+
+div.navBox div.menu div.images div.image{
+  width: calc(100% / 6 - 20px);
+  height: 80px;
+  background-color: #ccc;
+  float: right;
+  margin: 0px 10px;
+}
+
+/* 공통 */
+
+div.content{
+  width: 80%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+div.content div.header h2{
+  font-size: 36px;
+  line-height: 80px;
+  text-transform: capitalize;
+  font-weight: 700;
+  text-align: center;
+}
+div.content div.header p{
+  width: calc(100% / 12 * 4.5);
+  margin: 0 auto;
+  text-align: center;
+  height: 40px;
+  overflow: hidden;
+}
+div.content section::after{
+  content: '';
+  clear: both;
+  display: block;
+}
+div.content div.article{
+  float: left;
+  margin: 0 10px;
+}
+div.content div.article h3{
+  font-size: 24px;
+  text-transform: capitalize;
+  font-weight: 700;
+  line-height: 40px;
+}
+div.content div.article h5{
+  font-size: 12px;
+  line-height: 40px;
+  font-weight: 700;
+}
+div.content div.article p{
+  font-size: 12px;
+  line-height: 20px;
+  overflow: hidden;
+}
+div.content div.article div.image{
+  background-color: #999;
+}
+
+
+
+div.content.cnt01{
+  width: 100%;
+  max-width: none;
+}
+div.content.cnt01>div.header{
+  background-color: #333;
+  color: #fff;
+  padding: 160px 0 240px;
+}
+div.content.cnt01 div.header p{
+  width: calc(80% / 12 * 4.5);
+  max-width: 450px;
+  margin: 0 auto;
+  text-align: center;
+  height: 40px;
+  overflow: hidden;
+}
+div.content.cnt01>div.section{
+  width: 80%;
+  max-width: 1080px;
+  margin: 0 auto;
+  margin-top: -160px;
+}
+div.content.cnt01>div.section>div.artTop::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+div.content.cnt01>div.section>div.artTop>div.article{
+  width: calc(100% / 2 - 20px);
+}
+div.content.cnt01>div.section>div.artTop>div.article>div.texts{
+  padding: 20px calc(100% / 6 * 1.8) 0px 20px;
+}
+div.content.cnt01>div.section>div.artTop>div.article>div.texts>div.sns{
+  font-size: 20px;
+  line-height: 40px;
+}
+div.content.cnt01>div.section>div>div.article>div.image{
+  height: 340px;
+}
+div.content.cnt01>div.section>div.artBtm::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+div.content.cnt01>div.section>div.artBtm{
+  margin-top: 40px;
+}
+div.content.cnt01>div.section>div.artBtm>div.article{
+  width: calc(100% / 3 - 20px);
+}
+div.content.cnt01>div.section>div.artBtm>div.article>div.texts{
+  padding: 20px 20px 0px;
+}
+
+
+div.bnrWrap{
+  margin-top: 160px;
+  background: linear-gradient(90deg,#333 0%,#666 50%,#333 100%);
+}
+div.banner{
+  width: 80%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 80px 0px;
+  color: #fff;
+}
+div.banner::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+div.banner div.image{
+  width: calc(100% / 12 * 3 - 20px);
+  float: left;
+  margin: 0px 10px;
+  height: 240px;
+  background-color: #999;
+}
+div.banner div.image::after{
+  content: 'article title';
+  text-transform: capitalize;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  display: block;
+  margin-top: 240px;
+
+}
+
+div.banner div.texts{
+  width: calc(100% / 12 * 6 - 20px);
+  margin-left: 10px;
+  float: left;
+  padding-top: 80px;
+}
+div.banner div.texts h3{
+  font-size: 24px;
+  line-height: 40px;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+div.banner div.texts h5{
+  font-size: 12px;
+  line-height: 40px;
+  font-weight: 700;
+}
+
+div.banner div.texts p{
+  font-size: 12px;
+  line-height: 20px;
+  height: 40px;
+  overflow: hidden;
+}
+
+div.cntWrap:nth-child(5){
+  margin-top: 160px;
+}
+
+div.content.cnt02>div.section{
+  margin-top: 80px;
+}
+div.content.cnt02>div.section>div::after{
+  content: '';
+  clear: both;
+  display: block;
+}
+
+div.content.cnt02>div.section>div.thumbMain>div.article{
+  width: calc(100% - 20px);
+}
+div.content.cnt02>div.section>div.thumbMain>div.article>div.image{
+  height: 440px;
+  
+}
+div.content.cnt02>div.section>div.thumbMain>div.article>div.texts{
+  background-color: #000;
+  color: #fff;
+  margin-top: -80px;
+  padding-left: 20px;
+}
+
+div.content.cnt02>div.section>div.thumb{
+  margin-top: 20px;
+}
+div.content.cnt02>div.section>div.thumb>div.article{
+  width: calc(100% / 6 - 20px);
+  margin: 0px 10px;
+}
+div.content.cnt02>div.section>div.thumb>div.article>div.image{
+  height: 80px;
+}
+
+div.ftrWrap{
+  margin-top: 180px;
+  background-color: #000;
+  color: #fff;
+}
+div.ftrWrap div.footer{
+  width: 80%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 60px;
+}
+div.ftrWrap div.footer::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+div.ftrWrap div.footer h1{
+  font-size: 18px;
+  line-height: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  float: left;
+}
+div.ftrWrap div.footer p{
+  font-size: 14px;
+  line-height: 20px;
+  height: 40px;
+  overflow: hidden;
+  float: right;
+  width: calc(100% / 12 * 6);
+}

@@ -1,0 +1,57 @@
+div.hdrWrap>div.header>ul.nav>li{
+  display: none;
+}
+div.hdrWrap>div.header>ul.nav>li:nth-last-child(1){
+  display: block;
+}
+div.hdrWrap>div.header{
+  width: 90%;
+  max-width: 700px;
+}
+div.mainWrap>div.main{
+  width: 90%;
+  max-width: 700px;
+  padding: 80px 0px 100px;
+}
+div.mainWrap>div.main>h1{
+  font-size: 36px;
+  line-height: 40px;
+}
+div.mainWrap>div.main>p{
+  font-size: 18px;
+  line-height: 20px;
+  height: 80px;
+  margin-top: 20px;
+  width: calc(100% / 8 * 6);
+}
+div.cntWrap{
+  margin-top: 40px;
+}
+div.cntWrap>div.content{
+  width: 90%;
+  max-width: 700px;
+}
+div.cntWrap>div.content>div.header>h2{
+  font-size: 30px;
+}
+div.cntWrap>div.content>div.header>p{
+  width: calc(100% / 8 * 4.5);
+}
+div.cntWrap>div.content>div.section{
+  margin-top: 40px;
+}
+div.cntWrap>div.content.cnt01>div.section>div.article{
+  width: calc(50% - 20px);
+}
+div.cntWrap>div.content.cnt01>div.section>div.article>div.texts{
+  padding: 20px 0px;
+}
+div.cntWrap>div.content.cnt01>div.section>div.article>div.texts>h3{
+  text-align: left;
+}
+div.cntWrap>div.content.cnt01>div.section>div.article>div.texts>ul>li{
+  margin-left: 0px;
+}
+div.cntWrap>div.content.cnt01>div.section>div.article>div.texts>div.sns{
+  font-size: 30px;
+}

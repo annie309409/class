@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        div.artView{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        div.artView>div.artGroup{
+            width: 500%;
+            transition: margin-left 0.5s;
+        }
+        div.artView>div.artGroup::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.artView>div.artGroup>div.article{
+            width: calc(100% / 5);
+            float: left;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        div.artView>div.artGroup>div.article:nth-child(1){
+            background-image: url('./images/cnt01_pic01.jpg');
+        }
+        div.artView>div.artGroup>div.article:nth-child(2){
+            background-image: url('./images/cnt01_pic02.jpg');
+        }
+        div.artView>div.artGroup>div.article:nth-child(3){
+            background-image: url('./images/cnt01_pic03.jpg');
+        }
+        div.artView>div.artGroup>div.article:nth-child(4){
+            background-image: url('./images/cnt02_pic01.jpg');
+        }
+        div.artView>div.artGroup>div.article:nth-child(5){
+            background-image: url('./images/cnt02_pic02.jpg');
+        }
+        div.artView>ul{
+            width: 20%;
+            height: 20px;
+            position: absolute;
+            margin: auto;
+            left: 0;right: 0;
+            bottom: 20px;
+        }
+        div.artView>ul.paging::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.artView>ul.paging>li{
+            width: 20px;
+            height: 20px;
+            background-color: #fc0;
+            border-radius: 10px;
+            float: left;
+            margin: 0px 5px;
+            cursor: pointer;
+            transition: width 0.5s;
+        }
+        div.artView>ul.paging>li.show{
+            width: 40px;
+        }
+    </style>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            
+            var i = 0;
+
+
+            $('.paging>li').click(function(){
+                $('.paging>li').removeClass('show');
+                $(this).addClass('show');
+                var ind = $(this).index();
+                
+                $('.artGroup').css('margin-left',ind*-100+'%');
+                i=ind;
+            });
+            
+            
+            $('button').eq(1).click(function(){
+                i++;
+                if(i>=4){
+                    i=4;
+                }
+                $('.artGroup').css('margin-left',i*-100+'%');
+                $('.paging>li').removeClass('show');
+                $('.paging>li').eq(i).addClass('show');
+            });
+            
+            $('button').eq(0).click(function(){
+                i--;
+                if(i<=0){
+                    i=0;
+                }
+                $('.artGroup').css('margin-left',i*-100+'%');
+                $('.paging>li').removeClass('show');
+                $('.paging>li').eq(i).addClass('show');
+                
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div class="artView">
+        <div class="artGroup">
+            <div class="article"></div>
+            <div class="article"></div>
+            <div class="article"></div>
+            <div class="article"></div>
+            <div class="article"></div>
+        </div>
+        <ul class="paging">
+            <li class="show"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <button>left</button>
+    <button>right</button>
+</body>
+</html>

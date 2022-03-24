@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/day42_que01.js"></script>
+    <style>
+        div.artView{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        div.artView>div.artGroup{
+            width: 500%;
+            transition: margin-left 0.5s;
+            height: 250px;
+        }
+        div.artView>div.artGroup::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.artView>div.artGroup>div.article{
+            width: calc(100% / 5);
+            height: 250px;
+            float: left;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        div.artView>div.artGroup>div.article:nth-child(1){
+            background-image: url('./images/bnr_pic01.jpg');
+        }
+        div.artView>div.artGroup>div.article:nth-child(2){
+            background-image: url('./images/bnrbg01.jpg');
+        }
+        div.artView>div.artGroup>div.article:nth-child(3){
+            background-image: url('./images/cnt02_pic01.jpg');
+        }
+        div.artView>div.artGroup>div.article:nth-child(4){
+            background-image: url('./images/cnt02_pic03.jpg');
+        }
+        div.artView>div.artGroup>div.article:nth-child(5){
+            background-image: url('./images/cnt01_pic02.jpg');
+        }
+
+        /* 02 */
+        div.artView02{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+            height: 500px;
+            overflow: hidden;
+            position: relative;
+        }
+        div.artView02>div.artGroup02{
+            width: 100%;
+            transition: margin-top 0.5s;
+            height: 2500px;
+        }
+        div.artView02>div.artGroup02>div.article02{
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        div.artView02>div.artGroup02>div.article02:nth-child(1){
+            background-image: url('./images/cnt01_pic01.jpg');
+        }
+        div.artView02>div.artGroup02>div.article02:nth-child(2){
+            background-image: url('./images/cnt01_pic02.jpg');
+        }
+        div.artView02>div.artGroup02>div.article02:nth-child(3){
+            background-image: url('./images/cnt01_pic03.jpg');
+        }
+        div.artView02>div.artGroup02>div.article02:nth-child(4){
+            background-image: url('./images/cnt02_pic01.jpg');
+        }
+        div.artView02>div.artGroup02>div.article02:nth-child(5){
+            background-image: url('./images/cnt02_pic02.jpg');
+        }
+        div.artView02>ul.paging{
+            width: 100%;
+            position: absolute;
+            bottom: 150px;
+            left: 50px;
+        }
+        div.artView02>ul.paging>li{
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: #fc0;
+            margin: 10px 0px;
+            transition: height 0.5s;
+        }
+        div.artView02>ul.paging>li.on{
+            height: 40px;
+        }
+
+        /* 03 */
+        div.artView03{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        div.artView03>div.thunbView{
+            width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('./images/cnt01_pic01.jpg');
+            transition: all 0.5s;
+        }
+        div.artView03>div.thumb{
+            width: 100%;
+            margin-top: 20px;
+        }
+        div.artView03>div.thumb::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.artView03>div.thumb>div.article{
+            width: calc(100% / 5 - 20px);
+            margin: 0px 10px;
+            height: 100px;
+            float: left;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        div.artView03>div.thumb>div.article:nth-child(1){
+            background-image: url('./images/cnt01_pic01.jpg');
+        }
+        div.artView03>div.thumb>div.article:nth-child(2){
+            background-image: url('./images/cnt01_pic02.jpg');
+        }
+        div.artView03>div.thumb>div.article:nth-child(3){
+            background-image: url('./images/cnt01_pic03.jpg');
+        }
+        div.artView03>div.thumb>div.article:nth-child(4){
+            background-image: url('./images/cnt02_pic01.jpg');
+        }
+        div.artView03>div.thumb>div.article:nth-child(5){
+            background-image: url('./images/cnt02_pic02.jpg');
+        }
+
+        /* 04 */
+        div.artView04{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        div.artView04>div.thumbView04{
+            width: 500%;
+            transition: margin-left 0.5s;
+        }
+        div.artView04>div.thumbView04>div.article04{
+            height: 500px;
+            width: calc(100% / 5);
+            float: left;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        div.artView04>div.thumbView04>div.article04::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.artView04>div.thumbView04>div.article04:nth-child(1){
+            background-image: url('./images/cnt01_pic01.jpg');
+        }
+        div.artView04>div.thumbView04>div.article04:nth-child(2){
+            background-image: url('./images/cnt01_pic02.jpg');
+        }
+        div.artView04>div.thumbView04>div.article04:nth-child(3){
+            background-image: url('./images/cnt01_pic03.jpg');
+        }
+        div.artView04>div.thumbView04>div.article04:nth-child(4){
+            background-image: url('./images/cnt02_pic01.jpg');
+        }
+        div.artView04>div.thumbView04>div.article04:nth-child(5){
+            background-image: url('./images/cnt02_pic02.jpg');
+        }
+        div.artView04>div.thumb04{
+            width: 100%;
+        }
+        div.artView04>div.thumb04::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.artView04>div.thumb04>div.article05{
+            width: calc(100% / 5 - 20px);
+            height: 100px;
+            float: left;
+            margin: 0px 10px;
+            margin-top: 20px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        div.artView04>div.thumb04>div.article05:nth-child(1){
+            background-image: url('./images/cnt01_pic01.jpg');
+        }
+        div.artView04>div.thumb04>div.article05:nth-child(2){
+            background-image: url('./images/cnt01_pic02.jpg');
+        }
+        div.artView04>div.thumb04>div.article05:nth-child(3){
+            background-image: url('./images/cnt01_pic03.jpg');
+        }
+        div.artView04>div.thumb04>div.article05:nth-child(4){
+            background-image: url('./images/cnt02_pic01.jpg');
+        }
+        div.artView04>div.thumb04>div.article05:nth-child(5){
+            background-image: url('./images/cnt02_pic02.jpg');
+        }
+        </style>
+        <script>
+            $(function(){
+
+
+
+                
+            // 01
+            var i=0;
+            $('button').eq(0).click(function(){
+                i++;
+                if(i>=5){
+                    i=4;
+                }
+                $('.artGroup').css('margin-left',i*-100+'%');
+                console.log(i);
+            });
+            $('button').eq(1).click(function(){
+                i--;
+                if(i<=0){
+                    i=0;
+                }
+                $('.artGroup').css('margin-left',i*-100+'%')
+                console.log(i);
+            });
+
+            // 02
+            $('.paging>li').click(function(){
+                $('.paging>li').removeClass('on');
+                $(this).addClass('on');
+                var ind = $(this).index();
+                $('.artGroup02').css('margin-top',ind*-500+'px');
+                i=ind
+            });
+            $('button').eq(2).click(function(){
+                i++;
+                if(i>=5){
+                    i=4;
+                }
+                $('.artGroup02').css('margin-top',i*-500+'px');
+                $('.paging>li').removeClass('on');
+                $('paging>li').eq(i).addClass('on')
+                console.log(i);
+            });
+            $('button').eq(3).click(function(){
+                i--;
+                if(i<=0){
+                    i=0;
+                }
+                $('.artGroup02').css('margin-top',i*-500+'px');
+                $('.paging>li').removeClass('on');
+                $('paging>li').eq(i).addClass('on')
+                console.log(i);
+            });
+
+            // 03
+            $('.thumb>div.article').click(function(){
+                var img = $(this).css('background-image');
+                $('.thunbView').css('background-image',img);
+            });
+            
+            // 04
+            $('.thumb04>div.article05').click(function(){
+                var ind = $(this).index();
+                $('.thumbView04').css('margin-left',ind*-100+'%');
+            });
+        });
+        </script>
+</head>
+<body>
+    <p>01_문제</p>
+    <div class="artView">
+        <div class="artGroup">
+            <div class="article"></div>
+            <div class="article"></div>
+            <div class="article"></div>
+            <div class="article"></div>
+            <div class="article"></div>
+        </div>
+    </div>
+    <button>left</button>
+    <button>right</button>
+    
+    <p>02_문제</p>
+    <div class="artView02">
+        <div class="artGroup02">
+            <div class="article02"></div>
+            <div class="article02"></div>
+            <div class="article02"></div>
+            <div class="article02"></div>
+            <div class="article02"></div>
+        </div>
+        <ul class="paging">
+            <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <button>up</button>
+    <button>down</button>
+    
+    <p>03_문제</p>
+    <div class="artView03">
+        <div class="thunbView"></div>
+        <div class="thumb">
+            <div class="article"></div>
+            <div class="article"></div>
+            <div class="article"></div>
+            <div class="article"></div>
+            <div class="article"></div>
+        </div>
+    </div>
+    
+    <p>04_문제</p>
+    <div class="artView04">
+        <div class="thumbView04">
+            <div class="article04"></div>
+            <div class="article04"></div>
+            <div class="article04"></div>
+            <div class="article04"></div>
+            <div class="article04"></div>
+        </div>
+        <div class="thumb04">
+            <div class="article05"></div>
+            <div class="article05"></div>
+            <div class="article05"></div>
+            <div class="article05"></div>
+            <div class="article05"></div>
+        </div>
+    </div>
+
+</body>
+</html>

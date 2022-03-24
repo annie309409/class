@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <style>
+    button{
+      background-color: #fc0;
+      font-size: 12px;
+      transition: all 0.5s;
+    }
+    button.show{
+      background-color: orange;
+      font-size: 42px;
+    }
+  </style>
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function(){
+
+
+      // 이 안에 이제부터 입력하시면 됩니다.
+      // $('div.top>button').eq().click(function(){
+      //   alert('버튼 1번이 클릭된 상황입니다.');
+      // });
+
+      // class btm의 button의 첫번째 자식 기준으로 다음 형제를 선택해서 
+      // alert로 두번째 버튼입니다. 를 띄워보세요 !
+      // var i = 1;
+      // $('button').click(function(){
+      //   i++;
+      //   $('button').css('font-size','10px');
+      //   $(this).css({
+      //     fontSize: i*10+'px'
+      //   });
+      //   $(this).mouseleave(function(){
+      //     i=1;
+      //   })
+
+      // });
+
+
+
+      // $('div.top>button').even().click(function(){
+        
+      // });
+
+      $('button').click(function(){
+        if($(this).css('background-color') == 'rgb(255, 165, 0)'){
+          $('button').css({
+            'fontSize' : '12px',
+            'backgroundColor' : 'yellow'
+          });
+          $(this).css({
+            'fontSize' : '82px',
+            'backgroundColor' : 'red'
+          });
+        }else{
+          $('button').css({
+          'fontSize' : '12px',
+          'backgroundColor' : 'yellow'
+          });
+          $(this).css({
+            'fontSize' : '42px',
+            'backgroundColor' : 'orange'
+          });
+        }
+      });
+
+    });
+  </script>
+</head>
+<body>
+
+  <div class="top">
+    <button>탑버튼 1</button>
+    <button>탑버튼 2</button>
+    <button>탑버튼 3</button>
+  </div>
+  <div class="btm">
+    <button>바텀버튼1</button>
+    <button>바텀버튼2</button>
+    <button>바텀버튼3</button>
+  </div>
+</body>
+</html>

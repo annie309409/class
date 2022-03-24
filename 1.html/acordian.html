@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <style>
+    ul{
+      width: 50%;
+      margin: 0 auto;
+      margin-top: 40px;
+    }
+    ul>li:nth-child(odd){
+      background-color: #ccc;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    ul>li:nth-child(even){
+      padding: 0px 20px;
+      background-color: #ff0;
+      height: 0px;
+      overflow: hidden;
+      transition: height 0.5s;
+    }
+    ul>li.show{
+      height: 80px;
+    }
+    ul>li>p{
+      line-height: 20px;
+      font-size: 14px;
+      padding: 20px 0px;
+    }
+  </style>
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function(){
+      $('ul>li').click(function(){
+        $('li').removeClass('show');
+        $(this).next().addClass('show');
+      });
+    })
+  </script>
+</head>
+<body>
+  <ul>
+    <li>title</li>
+    <li class="show"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio vel tempora, facere nostrum eius quia, similique voluptate ab quos eos pariatur consectetur explicabo possimus veniam delectus nisi perferendis dolor id!</p></li>
+    <li>title</li>
+    <li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio vel tempora, facere nostrum eius quia, similique voluptate ab quos eos pariatur consectetur explicabo possimus veniam delectus nisi perferendis dolor id!</p></li>
+    <li>title</li>
+    <li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio vel tempora, facere nostrum eius quia, similique voluptate ab quos eos pariatur consectetur explicabo possimus veniam delectus nisi perferendis dolor id!</p></li>
+    <li>title</li>
+    <li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio vel tempora, facere nostrum eius quia, similique voluptate ab quos eos pariatur consectetur explicabo possimus veniam delectus nisi perferendis dolor id!</p></li>
+    <li>title</li>
+    <li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio vel tempora, facere nostrum eius quia, similique voluptate ab quos eos pariatur consectetur explicabo possimus veniam delectus nisi perferendis dolor id!</p></li>
+  </ul>
+</body>
+</html>

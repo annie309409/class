@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        div.artView{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        div.artView>div.thumbMain{
+            width: calc(100% - 20px);
+            margin: 0px 10px;
+            height: 500px;
+            background-repeat: no-repeat;
+            background-position:center;
+            background-size: cover;
+            background-image: url('./images/cnt01_pic01.jpg');
+            transition: all 0.5s;
+        }
+        div.artView div.thumView{
+        }
+        div.artView ul.thumbs{
+            margin-top: 20px;
+            width: calc(100% + (100% / 6 * 2));
+            transition: all 0.5s;
+        }
+        div.artView ul.thumbs::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.artView ul.thumbs>li{
+            width: calc(100% / 8 - 20px);
+            height: 150px;
+            margin: 0px 10px;
+            background-repeat: no-repeat;
+            background-position:center;
+            background-size: cover;
+            float: left;
+            cursor: pointer;
+            transition: all 0.5s;
+            filter: grayscale(1);
+        }
+        div.artView ul.thumbs>li:nth-child(1){
+            filter:grayscale(0);
+            border: 5px solid red;
+            background-image: url('./images/cnt01_pic01.jpg');
+        }
+        div.artView ul.thumbs>li:nth-child(2){
+            background-image: url('./images/cnt01_pic02.jpg');
+        }
+        div.artView ul.thumbs>li:nth-child(3){
+            background-image: url('./images/cnt01_pic03.jpg');
+        }
+        div.artView ul.thumbs>li:nth-child(4){
+            background-image: url('./images/cnt02_pic01.jpg');
+        }
+        div.artView ul.thumbs>li:nth-child(5){
+            background-image: url('./images/cnt02_pic02.jpg');
+        }
+        div.artView ul.thumbs>li:nth-child(6){
+            background-image: url('./images/cnt02_pic03.jpg');
+        }
+        div.artView ul.thumbs>li:nth-child(7){
+            background-image: url('./images/bnrbg01.jpg');
+        }
+        div.artView ul.thumbs>li:nth-child(8){
+            background-image: url('./images/bnr_pic01.jpg');
+        }
+        button{
+            font-size: 80px;
+        }
+        
+    </style>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            var i =0;
+            var j =0;
+            var url = '';
+            var thumbs = $('.thumbs');
+            var btn = $('button');
+            var action1 = '';
+
+            class Action{
+                constructor(dom, ind){
+                   this.dom = dom; 
+                   this.ind = ind;
+                }
+                set thumb(dom){
+                    url = this.dom.css('background-image');
+                    $('.thumbMain').css('background-image',url);
+                }
+                set slide(i){
+                    $('ul.thumbs').css('margin-left',i*-16.66+'%');
+                }
+                set on(a){
+                    a.css({
+                        'border':'0',
+                        'filter':'grayscale(1)'
+                    });
+                    this.dom.css({
+                        'border':'5px solid red',
+                        'filter':'grayscale(0)'
+                    });
+                }
+            }
+
+            thumbs.children('li').click(function(){
+                $('button').css('opacity',1);  
+                var ind= $(this).index();
+                j=ind;
+                action1 = new Action($(this),0);
+                action1.thumb='';
+                action1.on = thumbs.children('li'),0;
+            });
+
+            btn.last().click(function(){
+                i++;
+                j++;
+                btn.first().css('opacity',1);
+                if(i>=2){
+                    i=2;
+                }
+                if(j>=7){
+                    j=7;
+                    $(this).css('opacity',0);        
+                }
+                action1 = new Action(thumbs.children('li').eq(j),j);
+                action1.thumb='';
+                action1.on = thumbs.children('li');
+                action1.slide = i;
+            }); 
+            
+            
+            btn.first().click(function(){
+                i--;
+                j--;
+                btn.last().css('opacity',1);  
+                if(i<=0){
+                    i=0;
+                }
+                if(j<=0){
+                    j=0;
+                    $(this).css('opacity',0);        
+                }
+                action1 = new Action(thumbs.children('li').eq(j),j);
+                action1.thumb='';
+                action1.on = thumbs.children('li');;
+                action1.slide = i;
+            }); 
+        });
+    </script>
+</head>
+<body>
+    <div class="artView">
+        <div class="thumbMain"></div>
+        <div class="thumView">
+            <ul class="thumbs">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <button>left</button>
+    <button>right</button>
+</body>
+</html>

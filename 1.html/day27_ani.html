@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <style>
+    div.view{
+      width: 100vw;
+      height: 50px;
+      line-height: 50px;
+      overflow: hidden;
+      outline: 1px solid red;
+    }
+    div.view>h1{
+      font-size: 40px;
+      width: 300vw;
+      animation-name: move;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    @keyframes move {
+      0%{
+        margin-left: 0vw;
+      }
+      50%{
+        margin-left: -150vw;
+      }
+      100%{
+        margin-left: 0vw;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="view">
+    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi optio esse, velit possimus consectetur neque corrupti vero quidem eaque laborum. Culpa velit consequatur facere dolore non laboriosam laborum a ipsum.</h1>
+  </div>
+</body>
+</html>

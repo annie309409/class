@@ -1,0 +1,10 @@
+div.content.cnt01 div.header p{
+  width: calc(90% / 8 * 4.5);
+}
+div.mnTop ul.nav li{
+  display: none;
+}
+
+div.mnTop ul.nav li:nth-last-child(1){
+  display: block;
+}

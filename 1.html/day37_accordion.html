@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>day37_accordion.html</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <style>
+    div{
+      width: 150px;
+      height: 150px;
+      background-color: #fc0;
+      border-radius: 50%;
+      float: left;
+      margin: 20px;
+      font-size: 48px;
+      line-height: 150px;
+      text-align: center;
+
+    }
+  </style>
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function(){
+      var arr=[];
+      var now=0;
+      
+      lotto();
+
+      function lotto(){
+        for(i=0; i<10 ; i++){
+          now = parseInt(Math.random()*6);
+          if(arr.indexOf(now) == -1 ){
+            arr.push(now);
+          }else{
+            now = parseInt(Math.random()*6);
+          }
+        }
+        if(arr < 6 ){
+          return lotto();
+        }else{
+          return arr;
+        }
+      }
+      
+      
+      console.log(arr);
+
+      // $('div').click(function(){
+      //   $(this).text(arr[$(this).index()]);
+      // });
+    });
+
+  </script>
+</head>
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>day35_javascript.html</title>
+  <script>
+    
+    function num() {
+                let ranArr = [];
+                let i = 0;
+
+                while (i < 3) {
+                    const rand = Math.floor(Math.random() * 10);
+                    if (!sameNum(rand)) {
+                        ranArr.push(rand);
+                        i++;
+                    }
+
+                }
+
+                function sameNum(rand) {
+                    for (var i = 0; i < ranArr.length; i++) {
+                        if (rand === ranArr[i]) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                return ranArr;
+            }
+            console.log(num());
+        
+
+    window.onload=function(){
+      var h1 = document.getElementsByTagName('h1');
+      for(i=0; i<h1.length; i++){
+        h1[i].innerText=parseInt(Math.random()*6);
+        if(!sameNum(h1[i].innerText)){
+          h1[i].innerText=parseInt(Math.random()*6); 
+        }
+      }
+
+      function sameNum(num){
+        for(var j =1; j<h1.length;j++){
+          if(num == h1[j]){
+            return true;
+          }
+          return false;
+        }
+        return h1[j].innerText=parseInt(Math.random()*6); 
+      }
+    }
+
+  </script>
+  <style>
+    body::after{
+      content: '';
+      clear: both;
+      display: block;
+    }
+    h1{
+      width: calc(100% / 6 - 20px);
+      height: 150px;
+      background-color: #fc0;
+      float: left;
+      margin: 0 10px;
+      font-size: 50px;
+      text-align: center;
+      line-height: 150px;
+      transform: translate(10deg);
+    }
+    div.nemo{
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      transform: rotate(50deg);
+      transform-origin: left top;
+    }
+  </style>
+</head>
+<body>
+  <h1></h1>
+  <h1></h1>
+  <h1></h1>
+  <h1></h1>
+  <h1></h1>
+  <h1></h1>
+</body>
+</html>

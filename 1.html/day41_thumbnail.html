@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day41_thumbnail</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        div.artView{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        div.artView>div.thumbView{
+            width: 100%;
+            height: 500px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-image: url('./css/images/bnr01.jpg');
+            transition: all 0.5s;
+        }
+        div.artView>div.thumb{
+            width: 100%;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        div.artView>div.thumb>ul.thumbGroup{
+            width: 133.33%;
+            transition: margin-left 0.5s;
+        }
+        div.artView>div.thumb>ul.thumbGroup::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.artView>div.thumb>ul.thumbGroup>li{
+            width: calc(100% / 8 - 20px);
+            margin: 0 10px;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            float: left;
+            filter: grayscale(1);
+        }
+        div.artView>div.thumb>ul.thumbGroup>li:nth-child(1){
+            background-image: url('./css/images/bnr01.jpg');
+            filter: grayscale(0);
+        }
+        div.artView>div.thumb>ul.thumbGroup>li:nth-child(2){
+            background-image: url('./css/images/cnt02-03.jpg');
+        }
+        div.artView>div.thumb>ul.thumbGroup>li:nth-child(3){
+            background-image: url('./css/images/cnt1-01.jpg');
+        }
+        div.artView>div.thumb>ul.thumbGroup>li:nth-child(4){
+            background-image: url('./css/images/cnt1-02.jpg');
+        }
+        div.artView>div.thumb>ul.thumbGroup>li:nth-child(5){
+            background-image: url('./css/images/cnt1-03.jpg');
+        }
+        div.artView>div.thumb>ul.thumbGroup>li:nth-child(6){
+            background-image: url('./css/images/cnt2-01.jpg');
+        }
+        div.artView>div.thumb>ul.thumbGroup>li:nth-child(7){
+            background-image: url('./css/images/cnt2-02.jpg');
+        }
+        div.artView>div.thumb>ul.thumbGroup>li:nth-child(8){
+            background-image: url('./css/images/bnrWrap2.jpg');
+        }
+    </style>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            var i =0 ,j = 0;
+            var tumbGrli = $('.thumbGroup>li');
+            // var th = $(this);
+            // 썸네일
+            $('.thumbGroup>li').click(function(){
+                $('button').eq(0).css('opacity','1');
+                // 바인딩
+                var img = $(this).css('background-image')
+                $('.thumbView').css('background-image' , img);
+                // alert($(this).css('background-image'));
+                // 이미지를 누를때마다 이미지필터가 흑백과 색이 변경됨 
+                $('.thumbGroup>li').css('filter','grayscale(1)');
+                $(this).css('filter','grayscale(0)');
+                
+                
+            });
+            // left버튼
+            $('button').eq(0).click(function(){
+                $('button').eq(1).css('opacity','1');
+                i++;
+                j++;
+                if(i>=2){
+                    i=2;
+                }
+                if(j>=7){
+                    j=7;
+                    $(this).css('opacity','0');
+                }
+                var img =$('.thumbGroup>li').eq(j).css('background-image');
+                $('.thumbView').css('background-image',img);
+                $('.thumbGroup>li').css('filter','grayscale(1)');
+                
+                $('.thumbGroup>li').eq(j).css('filter','grayscale(0)');
+                // console.log(img+'숫자'+j);
+                // 썸네일이 보여지는 6개이고 이미지는 8개, 100 /6=16.666,반올림 17 /보여지지않는 이미지2개를 곱해서 썸그룹의 너비가 16.666..*2=33.333..
+                $('.thumbGroup').css('margin-left',i*-17+'%');
+                
+            });
+            
+            // right버튼
+            $('button').eq(1).click(function(){
+                $('button').eq(0).css('opacity','1');
+                i--;
+                j--;
+                if(i<=0){
+                    i=0;
+                }
+                console.log(i);
+                if(j<=0){
+                    j=0;
+                    $(this).css('opacity','0');
+                }
+                var img =$ ('.thumbGroup>li').eq(j).css('background-image');
+                $('.thumbView').css('background-image',img);
+                $('.thumbGroup>li').css('filter','grayscale(1)');
+                $('.thumbGroup>li').eq(j).css('filter','grayscale(0)');
+                $('.thumbGroup').css('margin-left',i*-17+'%');
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="artView">
+        <div class="thumbView"></div>
+        <div class="thumb">
+            <ul class="thumbGroup">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <button>left</button>
+    <button>right</button>
+</body>
+</html>
