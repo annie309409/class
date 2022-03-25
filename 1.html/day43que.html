@@ -274,9 +274,10 @@
         }
         </style>
     <script src="./js/jquery-3.6.0.min.js"></script>
-    <script>
+    <script type="module">
+        import action from './js/action.js';
         $(function(){
-            var aco = $('.aco');
+            var aco = $('ul.aco');
             var sV =$('.slideView');
             var sG = $('.slideGroup');
             var i =0, j=0;
@@ -284,61 +285,53 @@
             var sG2=$('.indGroup');
             var sV3= $('.slideView2');
             var sG3=$('.slideGroup2');
-
-            aco.children('li').click(function(){
-                aco.children('li').removeClass('show');
-                $(this).addClass('show');
+            var th ='';
+            
+            aco.children('li').even().click(function(){
+               action.acor(aco,$(this));
             });
 
             sV.children('.btns').children('div').eq(0).click(function(){
+                sV.children('.btns').children('div').eq(1).css('opacity',1);
                 i++;
-                if(i>=9){
-                    i=9;
-                }
-                sG.css('margin-left',i* -33.33+'%');
+                i=action.indNum(i,9,0);
+                action.artSlide(sG,i);
             }); 
 
             sV.children('.btns').children('div').eq(1).click(function(){
+                sV.children('.btns').children('div').eq(0).css('opacity',1);
                 i--;
-                if(i<=0){
-                    i=0;
-                }
-                sG.css('margin-left',i* -33.33+'%');
+                i=action.indNum(i,9,0);
+                action.artSlide(sG,i);
             }); 
 
             sV2.children('.btns').children('div').eq(0).click(function(){
                 j--;
-                if(j<=0){
-                    j=0;
-                }
-                sG2.css('margin-left',j*-100+'%');
-                sV2.children('ul.paging').children('li').removeClass('on');
-                sV2.children('ul.paging').children('li').eq(j).addClass('on');
+                j=action.indNum(j,4,0);
+                action.on(sV2,j);
+                action.fullSlide(sG2,j,'left');
             }); 
             sV2.children('.btns').children('div').eq(1).click(function(){
                 j++;
-                if(j>=4){
-                    j=4;
-                }
-                sG2.css('margin-left',j*-100+'%');
-                sV2.children('ul.paging').children('li').removeClass('on');
-                sV2.children('ul.paging').children('li').eq(j).addClass('on');
+                j=action.indNum(j,4,0);
+                action.on(sV2,j);
+                action.fullSlide(sG2,j,'left');
                 
             }); 
 
             sV2.children('ul.paging').children('li').click(function(){
-                var th =$(this);
+                th =$(this);
                 sV2.children('ul.paging').children('li').removeClass('on');
                 th.addClass('on');
-                sG2.css('margin-left',th.index()*-100+'%');
+                action.fullSlide(sG2,th.index());
                 j=th.index();
             });
 
             sV3.children('ul.paging').children('li').click(function(){
-                var th= $(this);
+                th= $(this);
                 sV3.children('ul.paging').children('li').removeClass('on');
                 th.addClass('on');
-                sG3.css('margin-top',th.index()*-200+'px');
+                action.fullSlide(sG3,th.index(),'top');
             });
 
 
