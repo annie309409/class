@@ -8,6 +8,16 @@
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/xeicon.min.css">
   <link rel="stylesheet" href="./css/day32_exe01.css">
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function(){
+      alert($(window).width());
+      var mn = $('.menu>li:first');
+      mn.click(function(){
+        $('.lb').toggleClass('add');
+      });
+    });
+  </script>
 </head>
 <body>
   <!-- 헤더 -->
@@ -24,6 +34,15 @@
         <li>menu3</li>
       </ul>
     </div>
+  </div>
+
+  <div class="lb">
+    <ul>
+      <li>menu01</li>
+      <li>menu02</li>
+      <li>menu03</li>
+      <li>menu04</li>
+    </ul>
   </div>
 
   <!-- 컨텐츠1 -->

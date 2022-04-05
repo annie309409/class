@@ -1,3 +1,6 @@
+body{
+  position: relative;
+}
 div.hdrWrap{
   background-color: #c46eb1;
 }
@@ -27,6 +30,10 @@ div.hdrWrap>div.header>h1{
   font-weight: 700;
   text-align: center;
 }
+div.hdrWrap>div.header>ul.menu{
+  position: relative;
+  z-index: 999;
+}
 div.hdrWrap>div.header>ul.menu::after{
   content: '';
   clear: both;
@@ -49,6 +56,23 @@ div.hdrWrap>div.header>ul.nav>li{
   margin-left: 30px;
   color: #fff;
 }
+
+
+/* 메뉴박스 */
+div.lb{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100vh;
+  background-color: #fc0;
+  overflow: hidden;
+  transition: width 0.5s;
+}
+div.lb.add{
+  width: 50%;
+}
+
 
 /* 공통 */
 div.cntWrap{
