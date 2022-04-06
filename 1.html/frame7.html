@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        body{
+            height: 5000px;
+            position: relative;
+        }
+        div.hdrWrap{
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            transition: all 0.5s;
+        }
+        div.hdrWrap.fix{
+            position: fixed;
+            top: 0;left: 0;
+            background-color: crimson;
+            z-index: 5;
+        }
+        div.hdrWrap>div.header{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        div.hdrWrap>div.header>h1{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        div.hdrWrap>div.header>ul{
+            display: flex;
+            justify-content: space-between;
+            width: calc(100% / 12 * 3);
+            line-height: 40px;
+            font-size: 20px;
+            text-transform: capitalize;
+        }
+        div.mainWrap{
+            background-image: url('./images/cnt01_pic01.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+             clip-path:polygon(100% 0%,100% 70%,0% 100%,0% 30%);
+            
+        }
+        div.main{
+            height: 500px;
+            
+        }
+        div.mainWrap2{
+            background-image: url('./images/cnt01_pic03.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+             clip-path:polygon(100% 0%,100% 70%,0% 100%,0% 30%); 
+             margin-top: -150px;
+        }
+        div.cntWrap{
+            margin-top: 100px;
+        }
+        div.cntWrap>div.content{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        div.cntWrap>div.content>div.header>h2{
+            font-size: 25px;
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 80px;
+        }
+        div.cntWrap>div.content>div.header>p{
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 12px;
+            line-height: 20px;
+            height: 40px;
+            overflow: hidden;
+        }
+        div.cntWrap>div.content>div.section{
+            overflow: hidden;
+            margin-top: 40px;
+            position: relative;
+            height: 250px;
+        }
+        div.cntWrap>div.content>div.section>div.btns{
+            position: absolute;
+            top: 0;right: 0;
+        }
+        div.cntWrap>div.content>div.section>div.btns>button{
+            font-size: 12px;
+            line-height: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 0;
+        }
+        div.cntWrap>div.content>div.section>div.artGroup{
+            width: 200%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-left: -16.66%;
+            height: 250px;
+        }
+        div.cntWrap>div.content>div.section>div.artGroup>div.article{
+            width: calc(100% / 12 - 20px);
+            height: 200px;
+            background-color: #333;
+            transition: height 0.5s;
+        }
+        div.cntWrap>div.content>div.section>div.artGroup>div.article:nth-child(4){
+            height: 250px;
+        }
+        div.cntWrap>div.content>div.section>div.artGroup>div.article:nth-child(5){
+            height: 250px;
+        }
+        </style>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            var artG = $('.artGroup');
+          $(window).scroll(function(){
+            var now = $(this).scrollTop();
+            
+            if(now>1){
+                $('.hdrWrap').addClass('fix');
+            }else{
+                $('.hdrWrap').removeClass('fix');
+                
+            }
+          });
+
+          $('.cnt01 button').eq(0).click(function(){
+            artG.stop().animate({
+                 marginLeft: -16.66*2+'%',
+                 overflow:'hidden'
+             },500,function(){
+                artG.find('.article:first').appendTo(artG);
+                artG.css({ marginLeft: -16.66+'%'});
+             });
+
+          });
+          $('.cnt01 button').eq(1).click(function(){
+            artG.stop().animate({
+                 marginLeft: -0+'%'
+             },500,function(){
+                artG.find('.article:last').prependTo(artG);
+                artG.css({ marginLeft: -16.66+'%'});
+             });
+          });
+        })
+    </script>
+</head>
+<body>
+    <div class="hdrWrap">
+        <div class="header">
+            <h1>logo</h1>
+            <ul class="nav">
+                <li>sub01</li>
+                <li>sub02</li>
+                <li>sub03</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mainWrap">
+        <div class="main"></div>
+    </div>
+    <div class="mainWrap2">
+        <div class="main"></div>
+    </div>
+
+
+    <div class="cntWrap">
+        <div class="content cnt01">
+            <div class="header">
+                <h2>content title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi odit necessitatibus harum velit? Odio sit corrupti nobis aspernatur quia cumque facilis vero facere modi, quaerat voluptate tenetur iste maiores dicta!</p>
+            </div>
+            <div class="section">
+                <div class="btns">
+                    <button>왼</button>
+                    <button>오</button>
+                </div>
+                <div class="artGroup">
+                    <div class="article">
+                        <div class="image i2"></div>
+                        <div class="texts"></div>
+                    </div>
+                    <div class="article">
+                        <div class="image i3"></div>
+                        <div class="texts"></div>
+                    </div>
+                    <div class="article">
+                        <div class="image i4"></div>
+                        <div class="texts"></div>
+                    </div>
+                    <div class="article">
+                        <div class="image i5"></div>
+                        <div class="texts"></div>
+                    </div>
+                    <div class="article">
+                        <div class="image i6"></div>
+                        <div class="texts"></div>
+                    </div>
+                    <div class="article">
+                        <div class="image i7"></div>
+                        <div class="texts"></div>
+                    </div>
+                    <div class="article">
+                        <div class="image i8"></div>
+                        <div class="texts"></div>
+                    </div>
+                    <div class="article">
+                        <div class="image i9"></div>
+                        <div class="texts"></div>
+                    </div>
+                    <div class="article">
+                        <div class="image i10"></div>
+                        <div class="texts"></div>
+                    </div>
+                    <div class="article">
+                        <div class="image i11"></div>
+                        <div class="texts"></div>
+                    </div>
+                    <div class="article">
+                        <div class="image i12"></div>
+                        <div class="texts"></div>
+                    </div>
+                    <div class="article">
+                        <div class="image i1"></div>
+                        <div class="texts"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

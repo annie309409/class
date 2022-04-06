@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        svg>rect{
+            fill:transparent;
+            stroke-width:3;
+            stroke:rgb(0,0,0);
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            transition: all 0.5s;
+        }
+    </style>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+
+            // var cnt =501;
+            // var crn = 0;
+
+            // $('svg').mouseenter(function(){
+            //     for(i=500; i<cnt; i++){
+            //         setInterval(function(){
+            //             // console.log(cnt);
+            //             cnt++;
+            //             crn =  parseInt($('rect').css('stroke-dashoffset'));
+            //             $('rect').css('stroke-dashoffset',crn+cnt);
+            //             // if(crn >= 1600){
+            //             //     console.log('완성!');
+            //             // }
+            //         },10);
+            //     }
+            // });
+
+            // $('svg').mouseleave(function(){
+            //     for(i=500; i<cnt; i++){
+            //         setInterval(function(){
+            //             // console.log(cnt);
+            //             cnt++;
+            //             crn =  parseInt($('rect').css('stroke-dashoffset'));
+            //             $('rect').css('stroke-dashoffset',1600);
+            //             // if(crn >= 1600){
+            //             //     console.log('완성!');
+            //             // }
+            //         },10);
+            //     }
+            // });
+
+            // var amt=0;
+            // var flag =false;
+            // $('svg').click(function(){
+            //     side();
+            // });
+            // $('svg').mouseleave(function(){
+            //     // side(0);
+            // })
+            // function side(){
+            //         $({per:amt}).animate({per:100},{
+            //             duration:5000,
+            //             progress:function(){
+            //                 amt =800-(800*this.per)/100;             
+            //                 $('svg>rect').css({strokeDashoffset: amt});
+            //             }
+            //         });
+                
+            // }
+
+
+            // $('svg').mouseleave(function(){
+            //     $({per:amt}).animate({per:0},{
+            //         duration:5000,
+            //         progress:function(){
+            //             amt =800-(800*this.per)/100;
+            //             $('svg>rect').css({strokeDashoffset: amt});
+            //         }
+            //     })
+            // });
+        });
+    </script>
+</head>
+<body>
+    <!-- <svg>
+        <rect width="30" height="100" />
+    </svg> -->
+
+    <div></div>
+</body>
+</html>

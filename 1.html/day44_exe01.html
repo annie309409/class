@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        div.content{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        div.content>div.header{
+            text-align: center;
+            text-transform: capitalize;
+        }
+        div.content>div.header>h2{
+            font-size: 36px;
+            line-height: 80px;
+        }
+        div.content>div.header>p{
+            font-size: 14px;
+            line-height: 20px;
+            height: 40px;
+            width: calc(100% / 12 * 8);
+            margin: 0 auto;
+        }
+        div.content>div.section{
+            margin-top: 80px;
+        }
+        div.content>div.section::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.content>div.section>div.artLeft{
+            width: calc(100% / 12 * 8);
+            float: left;
+        }
+        div.content>div.section>div.artLeft>div.thumbView{
+            width: calc(100% - 20px);
+            margin: 0px 10px;
+            height: 280px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url('./images/cnt01_pic01.jpg');
+            transition: background-image 0.5s;
+        }
+        div.content>div.section>div.artLeft>ul.thumbs{
+            margin-top: 20px;
+        }
+        div.content>div.section>div.artLeft>ul.thumbs::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.content>div.section>div.artLeft>ul.thumbs>li{
+            width: calc(100% / 4 - 20px);
+            margin: 0 10px;
+            background-color: #333;
+            height: 80px;
+            float: left;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        div.content>div.section>div.artLeft>ul.thumbs>li.i1{
+              background-image: url('./images/cnt01_pic01.jpg');
+        }
+        div.content>div.section>div.artLeft>ul.thumbs>li.i2{
+              background-image: url('./images/cnt01_pic02.jpg');
+        }
+        div.content>div.section>div.artLeft>ul.thumbs>li.i3{
+              background-image: url('./images/cnt01_pic03.jpg');
+        }
+        div.content>div.section>div.artLeft>ul.thumbs>li.i4{
+              background-image: url('./images/cnt02_pic01.jpg');
+        }
+
+        div.content>div.section>div.artRight{
+            width: calc(100% / 12 * 4 - 15px);
+            margin-left: 15px;
+            float: left;
+            
+        }
+        div.content>div.section>div.artRight>div.article>div.texts>h3{
+            font-size: 15px;
+            line-height: 40px;
+            text-transform: capitalize;
+            font-weight: 700;
+        }
+        div.content>div.section>div.artRight>div.article>ul.aco>li:nth-child(odd){
+            font-size: 14px;
+            line-height: 40px;
+            text-transform: capitalize;
+            border-top: 1px solid black;
+            cursor: pointer;
+        }
+
+        div.content>div.section>div.artRight>div.article>ul.aco>li:nth-child(odd).show+li{
+            height: 120px;
+        }
+        div.content>div.section>div.artRight>div.article>ul.aco>li:nth-child(even){
+            font-size: 14px;
+            line-height: 20px;
+            height: 0px;
+            overflow: hidden;
+            transition: height 0.5s;
+        }
+        div.content>div.section>div.artRight>div.article>ul.aco>li:nth-child(even)>p{
+            padding: 0px 10px;
+            height: 100px;
+            overflow: hidden;
+            
+        }
+        div.content>div.section>div.artRight>div.btns{
+            padding-top: 16px;
+            height: 56px;
+            border-top: 1px solid black;
+            position: relative;
+
+        }
+        div.content>div.section>div.artRight>div.btns::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.content>div.section>div.artRight>div.btns>div.btn{
+            width: calc(50% - 10px);
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            border: 1px solid orange;
+            border-radius: 20px;
+
+
+        }
+        div.content>div.section>div.artRight>div.btns>div.btn:nth-last-child(1){
+            margin-left: 20px;
+            left: auto;
+            right: 0;
+        }
+    </style>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $('ul.aco>li.show>span').text('+');
+            $('ul.aco>li').even().click(function(){
+                $('ul.aco>li').even().removeClass('show');
+                $(this).addClass('show');
+                $('ul.aco>li>span').text('-');
+                $('ul.aco>li.show>span').text('+');
+            });
+
+            $('ul.thumbs>li').click(function(){
+                var img  = $(this).css('background-image');
+                $('.thumbView').css('background-image',img);
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="cntWrap">
+        <div class="content">
+            <div class="header">
+                <h2>content title</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed veniam ut, eveniet alias quia nemo, recusandae id sequi incidunt blanditiis cupiditate dolorem eum amet? Quaerat a delectus corporis minima quas.</p>
+            </div>
+            <div class="section">
+                <div class="artLeft">
+                    <div class="thumbView"></div>
+                    <ul class="thumbs">
+                        <li class="image i1"></li>
+                        <li class="image i2"></li>
+                        <li class="image i3"></li>
+                        <li class="image i4"></li>
+                    </ul>
+                </div>
+                <div class="artRight">
+                    <div class="article">
+                        <div class="texts">
+                            <h3>segment title</h3>
+                        </div>
+                        <ul class="aco">
+                            <li class="show"><span>-</span> description</li>
+                            <li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore ducimus ut sint distinctio quidem, quia esse numquam cupiditate tenetur molestias expedita dignissimos, voluptatum doloremque. In quibusdam officia id laborum minus.</p></li>
+                            <li><span>-</span> description</li>
+                            <li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore ducimus ut sint distinctio quidem, quia esse numquam cupiditate tenetur molestias expedita dignissimos, voluptatum doloremque. In quibusdam officia id laborum minus.</p></li>
+                            <li><span>-</span> description</li>
+                            <li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore ducimus ut sint distinctio quidem, quia esse numquam cupiditate tenetur molestias expedita dignissimos, voluptatum doloremque. In quibusdam officia id laborum minus.</p></li>
+                            <li><span>-</span> description</li>
+                            <li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore ducimus ut sint distinctio quidem, quia esse numquam cupiditate tenetur molestias expedita dignissimos, voluptatum doloremque. In quibusdam officia id laborum minus.</p></li>
+                        </ul>
+                    </div>
+                    <div class="btns">
+                        <div class="btn">button</div>
+                        <div class="btn">button</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

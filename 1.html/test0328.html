@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/xeicon.min.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        div.cntWrap{
+            margin-top: 160px;
+        }
+        div.cntWrap>div.content{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        div.cntWrap>div.content>div.header{}
+        div.cntWrap>div.content>div.header>h2{
+            font-size: 36px;
+            text-transform: capitalize;
+            line-height: 80px;
+        }
+        div.cntWrap>div.content>div.header>p{
+            width: calc(100% / 12 * 8);
+            height: 40px;
+            overflow: hidden;
+        }
+        div.cntWrap>div.content>div.section{
+            margin-top: 80px;
+        }
+        div.cntWrap>div.content>div.section>div.article::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.cntWrap>div.content>div.section>div.article>div{
+            width: calc(100% / 12 * 8 - 20px);
+            margin: 0 10px;
+            float: left;
+            overflow: hidden;
+            position: relative;
+         
+        }
+        div.cntWrap>div.content>div.section>div.article>div.imageView>div.btns{
+            width: 100%;
+            height: 40px;
+            font-size: 40px;
+            font-weight: 700;
+            position: absolute;
+            margin: auto;
+            top: 0;bottom: 0;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.imageView>div.btns>.btn{
+            float: left;
+            cursor: pointer;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.imageView>div.btns>.btn:nth-last-child(1){
+            float: right;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.imageView>div.page{
+            text-align: right;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.imageView>div.imgGroup{
+            width: 100%;
+            height: 280px;
+            position: relative;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.imageView>div.imgGroup::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.imageView>div.imgGroup>div.image{
+            width: 100%;
+            position: absolute;
+            top: 0;left: 0;
+            height: 280px;
+            background-color: #ccc;
+            font-size: 36px;
+            line-height: 280px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        div.cntWrap>div.content>div.section>div.article>div:nth-last-child(1){
+            width: calc(100% / 12 * 4 - 20px);
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>ul{
+            border-bottom: 1px solid black;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>ul>li:nth-child(odd){
+            font-size: 18px;
+            line-height: 40px;
+            text-transform: capitalize;
+            font-weight: 700;
+            border-top: 1px solid black;
+            padding-left: 20px;
+            cursor: pointer;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>ul>li:nth-child(even){
+            height: 0px;
+            opacity: 0;
+            overflow: hidden;
+            transition: height 0.5s;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>ul>li:nth-child(even)>h5{
+            line-height: 40px;
+            font-size: 14px;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>ul>li:nth-child(even)>p{
+            font-size: 14px;
+            line-height: 20px;
+            height: 80px;
+            overflow: hidden;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>ul>li:nth-child(even)>div.sns{
+            line-height: 40px;
+            font-size: 25px;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>ul>li.show+li{
+            padding-left: 20px;
+            height: 160px;
+            opacity: 1;
+        }
+
+    </style>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            var pg = $('.page');
+            var imgGr = $('.imgGroup');
+            var nowpg = 1;
+            var i = 0;
+            var btn= $('.btn');
+            var slidepg= imgGr.find('.image').length;
+            pg.find('span:first').text(nowpg);
+            pg.find('span:last').text(slidepg);
+            var aco = $('ul.aco>li');
+
+            
+            
+            aco.even().click(function(){
+                aco.even().removeClass('show');
+               $(this).addClass('show');
+            });
+            
+            imgGr.find('.image:first').appendTo(imgGr);
+            btn.first().click(function(){
+                i--;
+                i = (slidepg+i)%6;
+                imgGr.find('.image').last().fadeOut(500,function(){
+                    $(this).prependTo(imgGr);
+                    $(this).fadeIn(0);
+                });
+                
+                pg.find('span:first').text(i+1);
+            });
+            btn.last().click(function(){
+                i++;
+                i= i%slidepg;
+                
+                imgGr.find('.image').first().fadeOut(0,function(){
+                    $(this).appendTo(imgGr);
+                    $(this).fadeIn(500);
+                });
+                pg.find('span:first').text(i+1);
+            });
+
+
+
+
+
+
+        
+        });
+
+
+    </script>
+</head>
+<body>
+    <div class="cntWrap">
+        <div class="content">
+            <div class="header">
+                <h2>content title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum magnam quas ipsum, ullam possimus itaque cum odit, inventore delectus nostrum porro optio, dolore omnis qui repudiandae numquam? Doloremque, quos voluptas.</p>
+            </div>
+            <div class="section">
+                <div class="article">
+                    <div class="imageView">
+                        <div class="imgGroup">
+                            <div class="image i1">image01</div>
+                            <div class="image i2">image02</div>
+                            <div class="image i3">image03</div>
+                            <div class="image i4">image04</div>
+                            <div class="image i4">image05</div>
+                            <div class="image i4">image06</div>
+                        </div>
+                        <div class="btns">
+                            <div class="btn"><i class="xi-angle-left-thin"></i></div>
+                            <div class="btn"><i class="xi-angle-right-thin"></i></div>
+                        </div>
+                        <div class="page">
+                            <h4><span>0</span> / <span>0</span></h4>
+                        </div>
+                    </div>
+                    <div class="texts">
+                        <ul class="aco">
+                            <li class="show">article title</li>
+                            <li>
+                                <h5>Lorem ipsum dolor sit amet.</h5>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia aspernatur facilis at blanditiis asperiores nisi corrupti optio magni ducimus quo earum inventore non expedita dolor ullam, officia excepturi nihil sapiente!</p>
+                                <div class="sns">
+                                    <i class="xi-pinterest"></i>
+                                    <i class="xi-instagram"></i>
+                                </div>
+                            </li>
+                            <li>article title</li>
+                            <li>
+                                <h5>Lorem ipsum dolor sit amet.</h5>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia aspernatur facilis at blanditiis asperiores nisi corrupti optio magni ducimus quo earum inventore non expedita dolor ullam, officia excepturi nihil sapiente!</p>
+                                <div class="sns">
+                                    <i class="xi-pinterest"></i>
+                                    <i class="xi-instagram"></i>
+                                </div>
+                            </li>
+                            <li>article title</li>
+                            <li>
+                                <h5>Lorem ipsum dolor sit amet.</h5>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia aspernatur facilis at blanditiis asperiores nisi corrupti optio magni ducimus quo earum inventore non expedita dolor ullam, officia excepturi nihil sapiente!</p>
+                                <div class="sns">
+                                    <i class="xi-pinterest"></i>
+                                    <i class="xi-instagram"></i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

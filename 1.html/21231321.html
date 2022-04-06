@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        @font-face{
+            font-family: 'logo';
+            src: url('./css/fonts/RubikBubbles-Regular.ttf') format('truetype');
+        }
+        body{
+            position: relative;
+            height: 5000px;
+        }
+        div.lod{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #fff;
+        }
+        div.box{
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            margin: auto;
+            top: 0;left: 0;right: 0;
+            overflow: hidden;
+        }
+        div.inner{
+            width: 110%;
+            height: 110%;
+            position: absolute;
+            top: 0;left: 0;
+            z-index: 999;
+            background-image: url('./images/jj.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        svg{
+            width: 50vw;
+        }
+        svg text{
+            fill:transparent;
+            stroke: aqua;
+            font-family: 'logo';
+            font-size: 65px;
+            stroke-width: 2;
+            stroke-dasharray: 278;
+            stroke-dashoffset: 278;
+        }
+        svg text.active{
+            animation: nv 5s linear forwards;
+        }
+
+        @keyframes nv{
+            0%{
+                stroke-dashoffset: 278;
+            }
+            100%{
+                stroke-dashoffset: 0;
+            }
+        }
+        video{
+            position: absolute;
+            top: 0;left: -10vw;
+            height: 100%;
+        }
+
+        div.hdrWrap{
+            width: 100%;
+            position: fixed;
+            top: 0;left: 0;
+        }
+        
+    </style>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            cnt=0;
+            setInterval(function(){
+                $('.lod').animate({
+                    opacity:0
+                },1000,function(){
+                    $(this).css('display','none');
+                })
+            },2000);
+            setInterval(function(){
+                $('text').addClass('active');
+            },3000);
+
+            $(window).scroll(function(){
+                now = $(this).scrollTop();
+                if(now>=500 && now<=1000){
+                    $('text').text('Career');
+                    $('text.active').
+                    
+                }else if(now>1000){
+                    $('text').text('skills');
+                    $('text').addClass('active');
+                  
+                }else{
+                    $('text').text('JeongPark');
+                    $('text').addClass('active');
+                }
+            })
+
+        });
+    </script>
+</head>
+<body>
+    <!-- loadingBox -->
+    <div class="lod">
+        <div class="box">
+            <div class="inner"></div>
+            <video src="./images/Clouds.mp4" muted autoplay></video>
+            <div class="skills">
+                <i class="xi-html5"></i>
+                <i class="xi-css3"></i>
+                <i class="xi-javascript"></i>
+                <i class=""></i>
+                <i class=""></i>
+                <i class=""></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- header -->
+    <div class="hdrWrap">
+        <header>
+            <div class="logo">
+            <svg>
+                <text transform="matrix(1 0 0 1 17.8303 52.4412)">JeongPark</text>
+            </svg>
+            </div>
+        </header>
+    </div>
+
+    <!-- introduction -->
+
+</body>
+</html>

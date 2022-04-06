@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        div.cntWrap>div.content{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        div.cntWrap>div.content>div.header{
+            text-align: center;
+        }
+        div.cntWrap>div.content>div.header>h2{
+            font-size: 36px;
+            line-height: 80px;
+            text-transform: capitalize;
+        }
+        div.cntWrap>div.content>div.header>p{
+            font-size: 14px;
+            line-height: 20px;
+            height: 40px;
+            overflow: hidden;
+            width: calc(100% / 12 * 8);
+            margin: 0 auto;
+        }
+        div.cntWrap>div.content>div.section{
+            margin-top: 80px;
+        }
+        div.cntWrap>div.content>div.section>div.article::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.image{
+            width: calc(100% / 12 * 8 - 20px);
+            margin: 0 10px;
+            float: left;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.image>div.thumbView{
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('./images/cnt01_pic01.jpg');
+            transition: background-image 0.5s;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.image>ul.thumb{
+            margin-top: 20px;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.image>ul.thumb::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.image>ul.thumb>li{
+            height: 80px;
+            width: calc(100% / 4 - 20px);
+            margin: 0px 10px;
+            float: left;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.image>ul.thumb>li:nth-child(1){
+            width: calc(100% / 4 - 10px);
+            margin-left: 0;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.image>ul.thumb>li:nth-last-child(1){
+            width: calc(100% / 4 - 10px);
+            margin-right: 0;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.image>ul.thumb>li.i1{
+            background-image: url('./images/cnt01_pic01.jpg');
+        }
+        div.cntWrap>div.content>div.section>div.article>div.image>ul.thumb>li.i2{
+            background-image: url('./images/cnt01_pic02.jpg');
+        }
+        div.cntWrap>div.content>div.section>div.article>div.image>ul.thumb>li.i3{
+            background-image: url('./images/cnt01_pic03.jpg');
+        }
+        div.cntWrap>div.content>div.section>div.article>div.image>ul.thumb>li.i4{
+            background-image: url('./images/cnt02_pic01.jpg');
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts{
+            width: calc(100% / 12 * 4 - 20px);
+            margin: 0 10px;
+            float: left;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>h3{
+            font-size: 24px;
+            line-height: 40px;
+            text-transform: capitalize;
+            font-weight: 700;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>ul.aco>li:nth-child(odd){
+            line-height: 40px;
+            font-size: 14px;
+            text-transform: uppercase;
+            border-top: 1px solid #000;
+            cursor: pointer;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>ul.aco>li:nth-child(odd).show+li{
+            height: 120px;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>ul.aco>li:nth-child(even){
+            height: 0px;
+            overflow: hidden;
+            padding-left: 20px;
+            transition: height 0.5s;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>ul.aco>li:nth-child(even)>p{
+            font-size: 14px;
+            line-height: 20px;
+            height: 100px;
+            overflow: hidden;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>div.btns{
+            border-top: 1px solid black;
+            padding-top: 14px;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>div.btns::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>div.btns>div.btn{
+            width: calc(50% - 10px);
+            line-height: 40px;
+            font-size: 14px;
+            border: 1px solid orange;
+            text-transform: uppercase;
+            text-align: center;
+            float: left;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        div.cntWrap>div.content>div.section>div.article>div.texts>div.btns>div.btn:nth-child(2){
+            margin-left: 20px;
+        }
+
+    </style>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            var thumbImg = $('.thumb>li');
+            var thumbView = $('.thumbView');
+            var acoLi = $('.aco>li');
+            var btn = $('.btn');
+            
+            thumbImg.click(function(){
+                var img  = $(this).css('background-image');
+                thumbView.css('background-image',img);
+            });
+            
+            
+            acoLi.even().click(function(){
+                var th = $(this);
+                acoLi.even().removeClass('show');
+                th.addClass('show');
+                acoLi.find('span:first').text('+');
+                th.find('span:first').text('-');
+            });
+
+            btn.eq(0).click(function(){
+                var txt= $(this).text();
+                acoLi.find('span:last').text(txt);
+                
+            });
+            btn.eq(1).click(function(){
+                var txt= $(this).text();
+                acoLi.find('span:last').text(txt);
+                
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+    <div class="cntWrap">
+        <div class="content">
+            <div class="header">
+                <h2>content title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil veniam, incidunt nostrum, deserunt explicabo possimus doloribus facilis doloremque voluptatibus corrupti rem porro totam, quos pariatur neque! Nihil quisquam explicabo est!</p>
+            </div>
+            <div class="section">
+                <div class="article">
+                    <div class="image">
+                        <div class="thumbView"></div>
+                        <ul class="thumb">
+                            <li class="image i1"></li>
+                            <li class="image i2"></li>
+                            <li class="image i3"></li>
+                            <li class="image i4"></li>
+                        </ul>
+                    </div>
+                    <div class="texts">
+                        <h3>segmeng title</h3>
+                        <ul class="aco">
+                            <li class="show"><span>-</span> <span>description</span></li>
+                            <li><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis quas, labore totam magnam possimus ducimus delectus molestias voluptatum. Aliquam veritatis delectus consequatur, veniam id iusto sapiente quae eos blanditiis voluptatibus?</p></li>
+                            <li><span>+</span> <span>description</span></li>
+                            <li><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis quas, labore totam magnam possimus ducimus delectus molestias voluptatum. Aliquam veritatis delectus consequatur, veniam id iusto sapiente quae eos blanditiis voluptatibus?</p></li>
+                            <li><span>+</span> <span>description</span></li>
+                            <li><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis quas, labore totam magnam possimus ducimus delectus molestias voluptatum. Aliquam veritatis delectus consequatur, veniam id iusto sapiente quae eos blanditiis voluptatibus?</p></li>
+                            <li><span>+</span> <span>description</span></li>
+                            <li><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis quas, labore totam magnam possimus ducimus delectus molestias voluptatum. Aliquam veritatis delectus consequatur, veniam id iusto sapiente quae eos blanditiis voluptatibus?</p></li>
+                        </ul>
+                        <div class="btns">
+                            <div class="btn">description</div>
+                            <div class="btn">view</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

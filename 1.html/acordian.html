@@ -7,10 +7,25 @@
   <title>Document</title>
   <link rel="stylesheet" href="./css/reset.css">
   <style>
+    body{
+      height: 5000px;
+
+    }
     ul{
       width: 50%;
       margin: 0 auto;
       margin-top: 40px;
+      margin-top: 200px;
+      opacity: 1;
+      transition: all 0.5s;
+    }
+    ul.fix{
+      position:fixed;
+      top:0;
+      margin:auto;
+      left:0;
+      right:0;
+      opacity: 0.5;
     }
     ul>li:nth-child(odd){
       background-color: #ccc;
@@ -39,10 +54,16 @@
   <script src="./js/jquery-3.6.0.min.js"></script>
   <script>
     $(function(){
-      $('ul>li').click(function(){
-        $('li').removeClass('show');
-        $(this).next().addClass('show');
-      });
+      $(window).scroll(function(){
+        var now  = $(this).scrollTop();
+        var flag = false;
+
+        if(now>=200){
+          $('ul').addClass('fix');
+        }else{
+          $('ul').removeClass('fix');
+        }
+      })
     })
   </script>
 </head>

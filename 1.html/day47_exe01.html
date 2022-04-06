@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        div.artView{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        div.artView>div.artGroup{
+            width: 500%;
+            height: 500px;
+        }
+        div.artView>div.artGroup>div.article{
+            width: calc(100% / 5 );
+            height: 500px;
+            float: left;
+            font-size: 72px;
+        }
+        div.artView>div.artGroup>div.article.i1{
+            background-color: deeppink;
+        }
+        div.artView>div.artGroup>div.article.i2{
+            background-color: coral;
+        }
+        div.artView>div.artGroup>div.article.i3{
+            background-color: lime;
+        }
+        div.artView>div.artGroup>div.article.i4{
+            background-color: forestgreen;
+        }
+        div.artView>div.artGroup>div.article.i5{
+            background-color: cadetblue;
+        }
+        div.artView>div.artGroup>div.article.i6{
+            background-color: aquamarine;
+        }
+        div.artView>div.btns{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            height: 40px;
+            margin: auto;
+            top: 0;bottom: 0;
+        }
+        div.artView>ul.paging{
+            display: flex;
+            width: 15%;
+            justify-content: space-between;
+        }
+        div.artView>ul.paging>li{
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: #fc0;
+            transition: width 0.5s;
+        }
+        div.artView>ul.paging>li.show{
+            width: 40px;
+        }
+    </style>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+        //   기초세팅
+        var artGroup = $('.artGroup');
+        var btns = $('.btns');
+        var pg = $('.paging');
+        var ind = 0;
+        artGroup.find('.article:last').prependTo(artGroup);
+        artGroup.css({marginLeft :  '-100%' });
+        
+        btns.find('button:first').click(function(){
+            artGroup.stop().animate({
+                marginLeft : 0
+            },500,function(){
+                artGroup.find('.article:last').prependTo(artGroup);
+                artGroup.css({marginLeft :  '-100%' });
+                ind = artGroup.find('.article:eq(1)').attr('data-num');
+                pg.children('li').removeClass('show');
+                pg.children('li').eq(ind).addClass('show');
+            });
+
+        });
+        btns.find('button:last').click(function(){
+            artGroup.stop().animate({
+                marginLeft : '-200%'
+            },500,function(){
+                artGroup.find('.article:first').appendTo(artGroup);
+                artGroup.css({marginLeft :  '-100%' });
+                ind = artGroup.find('.article:eq(1)').attr('data-num');
+                pg.children('li').removeClass('show');
+                pg.children('li').eq(ind).addClass('show');
+            });
+        });
+        
+        pg.find('li').click(function(){
+           ind = $(this).index();
+           var crnt=0;
+           artGroup.css({marginLeft :  '0%' });
+           
+           for(var i = 0; i<=4 ;i++){
+               if(artGroup.find('.article').eq(i).attr('data-num')==ind){
+                    artGroup.find('.article').removeClass('on');
+                    artGroup.find('.article').eq(i).addClass('on');
+                    crnt=$('.on').position('left');
+               }
+            }
+
+            artGroup.animate({
+                marginLeft: -crnt.left+'px'
+            },500);
+
+            pg.children('li').removeClass('show');
+            $(this).addClass('show');
+
+        });
+    });
+</script>
+</head>
+<body>
+  <div class="artView">
+      <div class="artGroup">
+          <div class="article i1" data-num="0">1</div>
+          <div class="article i2" data-num="1">2</div>
+          <div class="article i3" data-num="2">3</div>
+          <div class="article i4" data-num="3">4</div>
+          <div class="article i5" data-num="4">5</div>
+      </div>
+      <div class="btns">
+          <button> < </button>
+          <button> > </button>
+      </div>
+      <ul class="paging">
+          <li class="show"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+      </ul>
+  </div>  
+</body>
+</html>
