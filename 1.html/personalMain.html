@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <style>
+        /* @font-face{
+            font-family: 'logo';
+            src: url('./css/fonts/RubikBubbles-Regular.ttf') format('truetype');
+        }
+        svg{
+            width: 100vw;
+            height: 100vh;
+        }
+        svg text{
+            fill:transparent;
+            stroke: aqua;
+            font-family: 'logo';
+            font-size: 60px;
+            stroke-width: 2;
+            stroke-dasharray: 278;
+            stroke-dashoffset: 278;
+            transition: all 1s;
+        }
+        svg text.on{
+            animation: oN 1s 1 linear forwards;
+        }
+        svg text.off{
+            animation: oFF 1s 1 linear forwards;
+        }
+
+        @keyframes oN{
+            0%{
+                stroke-dashoffset: 278;
+            }
+            100%{
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes oFF{
+            0%{
+                stroke-dashoffset: 0;
+            }
+            100%{
+                stroke-dashoffset: 278;
+                
+            }
+        }
+
+  
+        div.hdrWrap{
+            width: 100%;
+            position: fixed;
+            top: 0;left: 0;
+        } */
+        div.cntWrap{
+            width: 100vw;
+            height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: height 1s;
+            overflow: hidden;
+            position: relative;
+        }
+        header{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .cntWrap:nth-last-child(2) img{
+            width: 30vw;
+            position: absolute;
+            bottom: 0;
+            transform: rotate(-45deg);
+            transform-origin: bottom;
+        }
+       
+    </style>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+    $(function(){
+            var cnt=0;
+            var wheel= 0;
+            flag = false;
+
+            // $(window).on('mousewheel',(e)=>{
+            //     wheel= e.originalEvent.deltaY;
+            //     now =  $(this).scrollTop();
+            //     if(wheel > 0){
+            //         $('text').removeClass('off');
+            //         $('text').addClass('on');
+            //     }else{
+            //         $('text').removeClass('on');
+            //         $('text').addClass('off');
+            //     }
+
+            // })
+
+
+            // 스크롤마다 svg채우기 로직
+            // $(window).on('mousewheel',function(ev){
+            //     wheel = ev.originalEvent.deltaY;
+            //     if(wheel>=0){
+            //         cnt=+cnt+80;
+            //         if(cnt>=278) cnt=278;
+            //         $('text').css({ strokeDashoffset: 278-cnt});
+            //     }else{
+            //         cnt=+cnt-80;
+            //         if(cnt<=0) cnt = 0;
+            //         $('text').css({ strokeDashoffset: 278-cnt});
+            //     }
+            // });
+            
+            setTimeout(function(){
+                $('text').eq(0).addClass('on');
+          
+                $(window).on('mousewheel',(e)=>{
+                    wheel=e.originalEvent.deltaY;
+                    if(wheel>0){
+                        $('text').addClass('on');
+                        if(!flag){
+                            flag=true;
+                            cnt++;
+                            if(cnt>=3) {
+                                cnt=3; 
+                                flag= false;
+                            }
+                            $('.cntWrap').css('height','0vh');
+                            $('text').css('display','none');
+                            $('text').eq(cnt).css('display','block');
+                            $('.cntWrap').eq(cnt).css('height','100vh');
+                        }
+                    }else{
+                        console.log(cnt);
+                        if(!flag){
+                            cnt--;
+                            flag=true;
+                            if(cnt<=0){cnt=0; flag=false;}
+                            $('.cntWrap').css('height','0vh');
+                            $('text').css('display','none');
+                            $('text').eq(cnt).css('display','block');
+                            $('.cntWrap').eq(cnt).css('height','100vh');
+                        }
+                    }
+                });
+
+                $('.cntWrap').on('transitionend',function(){
+                    flag=false;
+            });
+        },3000)
+    });
+    </script>
+</head>
+<body>
+    <!-- loadingBox -->
+    <div class="lod">
+        <div class="box">
+            <div class="inner"></div>
+            <video src="./images/Clouds.mp4" muted autoplay></video>
+            <div class="skills">
+                <img src="./images/html.png" alt="">
+                <img src="./images/css.png" alt="">
+                <img src="./images/scss.png" alt="">
+                <img src="./images/javascript.png" alt="">
+                <img src="./images/jquery.png" alt="">
+                <img src="./images/vue.png" alt="">
+                <img src="./images/hive.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- header -->
+    <div class="hdrWrap">
+        <header>
+            <div class="logo">
+            <svg>
+                <text transform="matrix(1 0 0 1 17.8303 52.4412)">JeongPark</text>
+                <text transform="matrix(1 0 0 1 17.8303 52.4412)">Career</text>
+                <text transform="matrix(1 0 0 1 17.8303 52.4412)">Skills</text>
+                <text transform="matrix(1 0 0 1 17.8303 52.4412)">Portfolio</text>
+            </svg>
+            </div>
+        </header>
+
+    </div>
+    <div class="cntWrap"></div>
+    <div class="cntWrap"></div>
+    <div class="cntWrap"></div>
+    <div class="cntWrap">
+        <div class="content cnt04">
+            <section>
+                <div class="artGroup">
+                    <article>
+                        <div class="image i1"></div>
+                        <div class="texts"></div>
+                    </article>
+                    <article>
+                        <div class="image i2"></div>
+                        <div class="texts"></div>
+                    </article>
+                    <article>
+                        <div class="image i3"></div>
+                        <div class="texts"></div>
+                    </article>
+                    <article>
+                        <div class="image i4"></div>
+                        <div class="texts"></div>
+                    </article>
+                    <article>
+                        <div class="image i5"></div>
+                        <div class="texts"></div>
+                    </article>
+                    <article>
+                        <div class="image i6"></div>
+                        <div class="texts"></div>
+                    </article>
+                    <article>
+                        <div class="image i7"></div>
+                        <div class="texts"></div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- introduction -->
+    <script>
+    setInterval(function(){
+        $('.lod').animate({
+            opacity:0
+        },1000,function(){
+            $(this).css('display','none');
+        })
+    },2000);
+    </script>
+</body>
+</html>

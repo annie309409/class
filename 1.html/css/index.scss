@@ -1,0 +1,101 @@
+
+@keyframes oN{
+    0%{
+        stroke-dashoffset: 278;
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+}
+@mixin logoFont(){
+    font-family: 'logo';
+    src:url('../css/fonts/RubikBubbles-Regular.ttf') format('truetype');
+}
+
+
+body{
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    .lod{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #fff;
+        z-index: 90;
+        @include font-face;
+        
+        
+        .box{
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            margin: auto;
+            top: 0;left: 0;right: 0;
+            overflow: hidden;
+        }
+        .inner{
+            width: 110%;
+            height: 110%;
+            position: absolute;
+            top: 0;left: 0;
+            z-index: 999;
+            background-image: url('../images/jj.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        video{
+            position: absolute;
+            top: 0;left: -10vw;
+            height: 100%;
+        }
+        .skills{
+            width: 50%;
+            position: absolute;
+            bottom: 50px;
+            z-index: 999;
+            display: flex;
+            margin: auto;
+            left: 0;right: 0;
+            justify-content: space-between;
+
+            img{
+                width: calc(100% / 7);
+            }
+        }
+        
+    }
+
+    .hdrWrap{
+        width: 100%;
+        position: fixed;
+        top: 0;left: 0;
+        header{
+            width: 80%;
+            max-width: 1080px;
+            margin: 0 auto;
+            .logo{
+                svg{
+                    width: 100vw;
+                    height: 100vh;
+                    text{
+                        fill:transparent;
+                        stroke: aqua;
+                        font-family: 'logo';
+                        font-size: 60px;
+                        stroke-width: 2;
+                        stroke-dasharray: 278;
+                        stroke-dashoffset: 278;
+                        transition: all 1s;
+                        &.on{
+                            animation: oN 1s 1 linear forwards;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
